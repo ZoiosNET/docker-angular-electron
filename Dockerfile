@@ -1,7 +1,20 @@
-FROM node
+FROM debian:buster
 
 LABEL maintainer="ZoiosNET<management@zoios.net>"
 
+RUN echo "Prepare"
 RUN apt-get update
-RUN apt-get install -y libgtk-3.0 libgconf-2-4 libasound2 libxtst6 libxss1 libnss3 xvfb
+RUN apt install apt-transport-https dirmngr gnupg ca-certificates
+
+RUN echo "Setup NodeJS-Repository"
+RUN curl -sL https://deb.nodesource.com/setup_15.x -o nodesource_setup.sh
+RUN bash nodesource_setup.sh
+
+RUN echo "Setup Mono-Repository"
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+RUN echo "deb https://download.mono-project.com/repo/debian stable-buster main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
+
+RUN echo "Install Components"
+RUN apt-get update
+RUN apt-get install -y nodejs libgtk-3.0 libgconf-2-4 libasound2 libxtst6 libxss1 libnss3 xvfb winehq-stable mono-complete build-essential
 RUN npm install electron angular-cli tsc electron-builder npm-run-all typescript -g
