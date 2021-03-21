@@ -3,7 +3,7 @@ FROM debian:buster
 LABEL maintainer="ZoiosNET<management@zoios.net>"
 
 RUN echo "Prepare"
-dpkg --add-architecture i386
+RUN dpkg --add-architecture i386
 RUN apt-get update
 RUN apt install -y apt-transport-https dirmngr gnupg ca-certificates curl
 
