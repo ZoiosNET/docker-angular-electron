@@ -4,7 +4,7 @@ LABEL maintainer="ZoiosNET<management@zoios.net>"
 
 RUN echo "Prepare"
 RUN apt-get update
-RUN apt install apt-transport-https dirmngr gnupg ca-certificates
+RUN apt install -y apt-transport-https dirmngr gnupg ca-certificates
 
 RUN echo "Setup NodeJS-Repository"
 RUN curl -sL https://deb.nodesource.com/setup_15.x -o nodesource_setup.sh
