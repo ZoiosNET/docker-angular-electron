@@ -17,5 +17,5 @@ RUN echo "deb https://download.mono-project.com/repo/debian stable-buster main" 
 
 RUN echo "Install Components"
 RUN apt-get update
-RUN apt-get install -y nodejs libgtk-3.0 libgconf-2-4 libasound2 libxtst6 libxss1 libnss3 libgbm1 xvfb wine wine32 wine64 libwine libwine:i386 fonts-wine mono-complete build-essential
+RUN apt-get install -y nodejs libgtk-3.0 libgconf-2-4 libasound2 libxtst6 libxss1 libnss3 libgbm1 xvfb wine wine32 wine64 libwine libwine:i386 fonts-wine mono-complete build-essential chromium-browser chromium-chromedriver
 RUN npm install electron angular-cli tsc electron-builder npm-run-all typescript -g
